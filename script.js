@@ -21,12 +21,13 @@ Player.prototype.gainXp = function (newExp) {
             this.level += 1; // We add a level per occurrence of points reaching threshold of 10 points
         }
     }
-    return this.level; // If you try to add a newExp value that exceeds 10, it simply will not get added and return the most recent level value for the instance of Player
+    return this.level; // If you try to add a newExp value that exceeds 10 or is a negative number, it simply will not get added and return the most recent level value for the instance of Player
+    // My goal here is to allow reasonable level-up increments (restrictions imposed: no de-levelling or levelling up an extreme amount in one go)
 }
 
 // Here, we aim to follow Traversy's example on how we should be able to utilize the object
 let player1 = new Player("Joe");
-let player2 = new Player("Not Joe")
+let player2 = new Player("Not Joe");
 player1.gainXp(5);
 player1.gainXp(5);
 player1.gainXp(5);
